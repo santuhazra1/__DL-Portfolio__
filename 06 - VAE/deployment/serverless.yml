@@ -1,0 +1,54 @@
+service: vae
+
+provider:
+  name: aws
+  runtime: python3.8
+  stage: dev # switch to prod during live deployment
+  region: ap-south-1
+  timeout: 30
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+    zip: true
+    slim: true
+    strip: false
+    noDeploy:
+      - docutils
+      - jmespath
+      - pip
+      - python-dateutil
+      - setuptools
+      - six
+      - tensorboard
+    useStaticCache: true
+    useDownloadCache: true
+    cacheLocation: './cache'
+
+package:
+  individually: false
+  exclude:
+    - package.json
+    - package-lock.json
+    - node_modules/**
+    - cache/**
+    - test/**
+    - .vscode/**
+    - __pycache__/**
+    - .pytest_cache/**
+    - model/**
+    - README.md
+
+functions:
+  reconstruct:
+    handler: handler.reconstruct
+    memorySize: 3008 # MB
+    timeout: 30 # seconds
+    events:
+      - http:
+          path: vae
+          method: post
+          cors: true
+
+plugins:
+  - serverless-python-requirements

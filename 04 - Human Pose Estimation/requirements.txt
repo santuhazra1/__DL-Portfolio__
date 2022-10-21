@@ -1,0 +1,10 @@
+EasyDict==1.7
+opencv-python==3.4.1.15
+scipy
+pyyaml
+json_tricks
+scikit-image
+torch==1.5.1
+torchvision==0.6.0
+onnx==1.7.0
+onnxruntime==1.4.0

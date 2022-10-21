@@ -1,0 +1,60 @@
+service: face-recognition
+
+provider:
+  name: aws
+  runtime: python3.8
+  stage: dev # switch to prod during live deployment
+  region: ap-south-1
+  timeout: 30
+  environment:
+    S3_BUCKET: eva4
+    MODEL_PATH: face_recognition.pt
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Action:
+        - s3:getObject
+      Resource: arn:aws:s3:::eva4/face_recognition.pt
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+    zip: true
+    slim: true
+    strip: false
+    noDeploy:
+      - docutils
+      - jmespath
+      - pip
+      - python-dateutil
+      - setuptools
+      - six
+      - tensorboard
+    useStaticCache: true
+    useDownloadCache: true
+    cacheLocation: './cache'
+
+package:
+  individually: false
+  exclude:
+    - package.json
+    - package-lock.json
+    - node_modules/**
+    - cache/**
+    - test/**
+    - .vscode/**
+    - __pycache__/**
+    - .pytest_cache/**
+
+functions:
+  recognize_face:
+    handler: handler.recognize_face
+    memorySize: 3008 # MB
+    timeout: 30 # seconds
+    events:
+      - http:
+          path: recognize
+          method: post
+          cors: true
+
+plugins:
+  - serverless-python-requirements
