@@ -6,13 +6,6 @@
 The goal of this project is to create and deploy the following models on AWS Lambda and create a static website on AWS S3 for the users to interact with the trained models:
 
 - ResNet-34 model pre-trained on the imagenet dataset
-- Custom Resnet model trained in the previous project to classify objects belonging to a custom dataset containing following classes
-  - Cheetah
-  - Tiger
-  - Fox
-  - Wolf
-  - Lion
-  - Hyena
 - Face Alignment
 - Face Swap
 
