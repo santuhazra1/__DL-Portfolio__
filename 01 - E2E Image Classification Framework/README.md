@@ -6,7 +6,7 @@ The goal of this project is to create a farmework for end 2 end image classifica
 
 - Use ResNet-34 model pre-trained on the imagenet dataset
 - Transfer Learning
-- Use of Custom Animal DataSet from here
+- Use of Custom Animal DataSet from [here](https://www.kaggle.com/datasets/anshulmehtakaggl/wildlife-animals-images)
 - CIFAR10 Dataset
 - gradCam
 

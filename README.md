@@ -9,6 +9,10 @@ I can work really well when it comes to Computer Vision, Python projects, and an
 ## Please find the below project details: 
 <hr/>
 
+### End 2 End Image Classification Framework
+
+Using pytorch to build a Image Classification Framework to train any kind of Custom Images and as well as CIFAR10 Data. To see the code go [here](01%20-%20E2E%20Image%20Classification%20Framework).
+
 ### Face Alignment and Face Swap
 
 Using dlib to build a face alignment and a face swap model and deploying it on AWS Lambda. To see the code go [here](03%20-%20Face%20Recognition%20Part%201).
